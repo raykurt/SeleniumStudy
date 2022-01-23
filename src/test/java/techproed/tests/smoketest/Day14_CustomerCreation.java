@@ -8,6 +8,9 @@ import techproed.pages.EmployeeDefaultPage;
 import techproed.pages.LoginPage;
 import techproed.utilities.ConfigurationReader;
 import techproed.utilities.Driver;
+import techproed.utilities.ReusableMethods;
+
+import java.io.IOException;
 
 public class Day14_CustomerCreation {
     EmployeeDefaultPage employeeDefaultPage = new EmployeeDefaultPage();
@@ -15,9 +18,9 @@ public class Day14_CustomerCreation {
     LoginPage loginPage = new LoginPage();
 
     @Test
-    public void createCustomerAsEmployee() throws InterruptedException {
+    public void createCustomerAsEmployee() throws InterruptedException, IOException {
         Driver.getDriver().get(ConfigurationReader.getProperty("gmi_login_url"));
-        loginPage.loginApplication("gino.wintheiser","%B6B*q1!TH");
+        loginPage.loginApplication(ConfigurationReader.getProperty("employee_username"),ConfigurationReader.getProperty("employee_password"));
 
         employeeDefaultPage.myOperationsDropdown.click();
         employeeDefaultPage.manageCustomers.click();
@@ -29,8 +32,8 @@ public class Day14_CustomerCreation {
         createCustomerPage.lastname.sendKeys(Faker.instance().name().lastName());
         createCustomerPage.middleInitial.sendKeys("R");
         createCustomerPage.email.sendKeys(Faker.instance().internet().emailAddress());
-        createCustomerPage.mobilePhoneNumber.sendKeys(Faker.instance().phoneNumber().phoneNumber());
-        createCustomerPage.phoneNumber.sendKeys(Faker.instance().phoneNumber().cellPhone());
+        createCustomerPage.mobilePhoneNumber.sendKeys("123-456-7890");
+        createCustomerPage.phoneNumber.sendKeys("123-456-7890");
         createCustomerPage.zipCode.sendKeys(Faker.instance().address().zipCode());
         createCustomerPage.address.sendKeys(Faker.instance().address().streetAddress());
         createCustomerPage.city.sendKeys(Faker.instance().address().city());
@@ -49,6 +52,8 @@ public class Day14_CustomerCreation {
 
         createCustomerPage.zelleEnrolledCheckbox.click();
         createCustomerPage.saveButton.click();
+
+        ReusableMethods.getScreenshot("CustomerCreate");
 
     }
 }
