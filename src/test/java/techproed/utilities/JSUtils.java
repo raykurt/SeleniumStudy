@@ -52,7 +52,7 @@ public class JSUtils {
     public static void generateAlert(String message) throws InterruptedException {
         JavascriptExecutor javascriptExecutor = ((JavascriptExecutor) Driver.getDriver());
         javascriptExecutor.executeScript("alert('" + message + "')");
-        Thread.sleep(3000);
+        Thread.sleep(2500);
     }
 
     /*
