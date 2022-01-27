@@ -51,4 +51,32 @@ public class HomePage_Amazon {
     @FindBy(id="nav-cart-count")
     public WebElement chartCount;
 
+// For Sign in Page Test
+//  @FindBy(id = "nav-link-accountList")
+//  public WebElement signInTab;
+
+    @FindBy(id="ap_email")
+    public WebElement emailBox;
+
+    @FindBy(xpath = "//h4")
+    public WebElement alertText;
+
+    @FindBy(id="continue")
+    public WebElement continueButton;
+
+    @FindBy(id="createAccountSubmit")
+    public WebElement accountCreationButton;
+
+    @FindBy(partialLinkText = "Need")
+    public WebElement helpButton;
+
+    @FindBy(partialLinkText = "Forgot")
+    public WebElement forgotPasswordText;
+
+    @FindBy(tagName = "h1")
+    public WebElement passwordAssistanceText;
+
+    @FindBy(xpath = "//h1")
+    public WebElement createAccountText;
+
 }

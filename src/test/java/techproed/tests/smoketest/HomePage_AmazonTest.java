@@ -1,5 +1,6 @@
 package techproed.tests.smoketest;
 
+import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import techproed.pages.HomePage_Amazon;
@@ -44,6 +45,35 @@ public class HomePage_AmazonTest {
         Assert.assertEquals(chart, "0");
 
         Driver.closeDriver();
-
     }
+
+    @Test
+    public void setSignInPage(){
+
+        Driver.getDriver().get(ConfigurationReader.getProperty("amazon_url"));
+
+        homePage.signInTab.click();
+        homePage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
+        homePage.continueButton.click();
+        String alertText= homePage.alertText.getText();
+        Assert.assertEquals(alertText,"There was a problem");
+
+        homePage.helpButton.click();
+        homePage.forgotPasswordText.click();
+
+        String assistanceText= homePage.passwordAssistanceText.getText();
+        Assert.assertEquals(assistanceText,"Password assistance");
+
+        Driver.getDriver().navigate().back();
+
+        Driver.getDriver().navigate().back();
+
+        homePage.accountCreationButton.click();
+
+        String createAccountText= homePage.createAccountText.getText();
+        Assert.assertEquals(createAccountText,"Create account");
+
+        Driver.closeDriver();
+    }
+
 }
