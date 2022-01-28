@@ -1,6 +1,7 @@
 package techproed.tests.smoketest;
 
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import techproed.pages.CreateCustomerPage;
 import techproed.pages.EmployeeDefaultPage;
@@ -57,7 +58,10 @@ public class Day14_CustomerCreation {
         createCustomerPage.saveButton.click();
 
         ReusableMethods.getScreenshot("CustomerCreated");
+    }
 
-
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
     }
 }
