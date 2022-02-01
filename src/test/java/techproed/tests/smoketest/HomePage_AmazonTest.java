@@ -73,6 +73,7 @@ public class HomePage_AmazonTest {
         String createAccountText= homePage.createAccountText.getText();
         Assert.assertEquals(createAccountText,"Create account");
 
+//        Close Driver
         Driver.closeDriver();
     }
 

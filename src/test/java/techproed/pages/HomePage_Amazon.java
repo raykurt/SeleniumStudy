@@ -51,10 +51,6 @@ public class HomePage_Amazon {
     @FindBy(id="nav-cart-count")
     public WebElement chartCount;
 
-// For Sign in Page Test
-//  @FindBy(id = "nav-link-accountList")
-//  public WebElement signInTab;
-
     @FindBy(id="ap_email")
     public WebElement emailBox;
 
